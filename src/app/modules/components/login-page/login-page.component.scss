@@ -1,0 +1,121 @@
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s; /* Change to speed up or slow down */
+  animation-iteration-count: infinite; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.card_title {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.card_title h1 {
+  font-size: 26px;
+  font-weight: bold;
+  font-family: revert-layer;
+}
+
+.card_title span {
+  font-family: revert-layer;
+}
+
+.btn-brand-03 {
+  background-color: #f67a3c;
+  border-color: #f67a3c;
+  color: #fff;
+}
+
+.btn-lg,
+.btn-group-lg > .btn {
+  font-size: 0.977rem;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.btn {
+  line-height: 1.75em;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  padding: 0.65em 1.995em;
+  position: relative;
+  font-family: "Lato", sans-serif;
+  transition: all 300ms ease-in-out;
+}
+.btn-lg {
+  font-size: 0.977rem;
+  padding-top: 11px;
+  font-family: "Lato", sans-serif;
+  padding-bottom: 11px;
+}
+.background-radial-gradient {
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218, 41%, 35%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218, 41%, 45%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+#radius-shape-1 {
+  height: 220px;
+  width: 220px;
+  top: -60px;
+  left: -130px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
+}
+
+#radius-shape-2 {
+  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+  bottom: -60px;
+  right: -110px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.9) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}

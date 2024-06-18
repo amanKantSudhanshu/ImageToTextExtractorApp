@@ -1,0 +1,272 @@
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container px-2 py-3 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1
+          class="my-5 display-5 fw-bold ls-tight"
+          style="color: hsl(218, 81%, 95%)"
+        >
+          I smile <br />
+          <span style="color: hsl(218, 81%, 75%)"
+            >when I see my friends using Vitraya to process their insurance
+            claims thanks to me.</span
+          >
+        </h1>
+        <p
+          class="mb-3 opacity-70"
+          style="color: hsl(218, 81%, 85%); font-size: 20px"
+        >
+          The world's fastest healthcare claim settlement platform
+        </p>
+        <div class="action-btns">
+          <a
+            href="https://www.vitrayatech.com/case-studies.html"
+            class="btn btn-brand-03 btn-lg"
+            >Learn More</a
+          >
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div
+          id="radius-shape-1"
+          class="position-absolute rounded-circle shadow-5-strong"
+        ></div>
+        <div
+          id="radius-shape-2"
+          class="position-absolute shadow-5-strong"
+        ></div>
+
+        <div class="card bg-glass">
+          <div class="card_title">
+            <ng-container *ngIf="!isLogIn">
+              <h1>Create Account</h1>
+              <div class="hoverIcon" (click)="goToLoggingPage()">
+                Already have an account?
+                <i class="fas fa-sign-in-alt"></i>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="isLogIn">
+              <h1>Welcome Back <span class="wave">👋</span></h1>
+            </ng-container>
+          </div>
+          <div class="card-body px-4 py-5 px-md-5">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div *ngIf="!isLogIn" class="row">
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <input
+                      type="text"
+                      formControlName="name"
+                      class="form-control"
+                      placeholder="Enter Your User Name"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted &&
+                          (registerForm.get('name')?.touched ||
+                            registerForm.get('name')?.dirty) &&
+                          !registerForm.get('name')?.valid
+                      }"
+                    />
+                    <span
+                      *ngIf="(registerForm.get('name')?.errors?.['required'])
+                              && submitted"
+                    >
+                      <small id="firstNameHelp" class="form-text text-danger"
+                        >Please Enter Your Name</small
+                      >
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <input
+                      type="text"
+                      formControlName="phoneNumber"
+                      class="form-control"
+                      placeholder="Enter Your Phone Number"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted &&
+                          (registerForm.get('phoneNumber')?.touched ||
+                            registerForm.get('phoneNumber')?.dirty) &&
+                          !registerForm.get('phoneNumber')?.valid
+                      }"
+                    />
+                    <span
+                      *ngIf="(registerForm.get('phoneNumber')?.errors?.['required'])
+                              && submitted"
+                    >
+                      <small id="firstNameHelp" class="form-text text-danger"
+                        >Enter Your Phone Number</small
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input
+                  type="text"
+                  formControlName="emailId"
+                  class="form-control"
+                  placeholder="Enter Your Email"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted &&
+                      (registerForm.get('emailId')?.touched ||
+                        registerForm.get('emailId')?.dirty) &&
+                      !registerForm.get('emailId')?.valid
+                  }"
+                />
+                <div
+                  *ngIf="submitted && registerForm.get('emailId')?.errors"
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="registerForm.get('emailId')?.errors?.['required'] && submitted"
+                  >
+                    Email is required
+                  </div>
+                  <div
+                    *ngIf="registerForm.get('emailId')?.errors?.['email'] && submitted"
+                  >
+                    Email must be a valid email address
+                  </div>
+                </div>
+              </div>
+
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input
+                  type="password"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="Enter Your Password"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted &&
+                      (registerForm.get('password')?.touched ||
+                        registerForm.get('password')?.dirty) &&
+                      !registerForm.get('password')?.valid
+                  }"
+                />
+                <div
+                  *ngIf="submitted && registerForm.get('password')?.errors"
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="registerForm.get('password')?.errors?.['required'] && submitted"
+                  >
+                    Password is required
+                  </div>
+                  <div
+                    *ngIf="registerForm.get('password')?.errors?.['minlength'] && submitted"
+                  >
+                    Password must be at least 4 characters
+                  </div>
+                </div>
+              </div>
+
+              <div
+                *ngIf="!isLogIn"
+                class="d-flex align-items-center justify-content-around"
+              >
+                <button
+                  type="submit"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-primary btn-block mb-4"
+                >
+                  Sign up
+                </button>
+                <!-- You can disable the button with [disabled]="!registerForm.valid" -->
+
+                <button
+                  class="btn btn-secondary btn-block mb-4"
+                  type="reset"
+                  (click)="onReset()"
+                >
+                  Reset
+                </button>
+              </div>
+              <div *ngIf="isLogIn" class="d-flex justify-content-center">
+                <button
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-primary btn-block mb-4"
+                  (click)="loginUser()"
+                >
+                  Log In
+                </button>
+                <!-- You can disable the login button with [disabled]="
+                    !registerForm.get('emailId')?.valid ||
+                    !registerForm.get('password')?.valid
+                  " -->
+              </div>
+
+              <!-- Sign Up buttons -->
+              <ng-container *ngIf="isLogIn">
+                <div class="text-center">
+                  <p>or sign up with:</p>
+                  <button
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1 hoverIcon"
+                    (click)="signUp()"
+                  >
+                    <i class="fas fa-user"></i>
+                  </button>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!isLogIn"
+                ><div class="text-center">
+                  <p>or sign up with:</p>
+                  <button
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1"
+                  >
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1"
+                  >
+                    <i class="fab fa-google"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1"
+                  >
+                    <i class="fab fa-twitter"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1"
+                  >
+                    <i class="fab fa-github"></i>
+                  </button></div
+              ></ng-container>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

@@ -1,0 +1,118 @@
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://www.vitraya.com/index.html"
+      >Vitraya</a
+    >
+    <p class="navbar-brand">Welcome {{ userName }}</p>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="https://www.vitraya.com/index.html"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://blog.vitraya.com/">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.vitraya.com/contact-us.html"
+            >Contact</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/watch?v=M1-9xsSWZzc"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<h1><div class="mt-4"></div></h1>
+<div
+  class="ml-3 pl-5 d-flex container px-0 flex flex-1 flex-row justify-content-around align-content-evenly"
+>
+  <input
+    type="file"
+    id="formFile"
+    #imageInput
+    type="file"
+    accept="image/*"
+    (change)="processFileTestingModell(imageInput)"
+  />
+
+  <button class="learn-more" (click)="getAllImages()">
+    <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+    </span>
+    <span class="button-text">Get Images</span>
+  </button>
+  <ng-container class="ml-auto">
+    <button class="ml-auto btn btn-warning" type="button" (click)="logOut()">
+      <span class="button-text">Log-Out</span>
+    </button>
+  </ng-container>
+</div>
+
+<div></div>
+
+<ng-container>
+  <div class="mt-2">
+    <p-table [value]="imageModelList" dataKey="id">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="col-1">Name</th>
+          <th class="col-4">Normal Text</th>
+          <th class="col-1">Bold Text</th>
+          <th class="col-4">Image</th>
+          <th class="col-2">Remove</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-imageModel let-rowIndex="rowIndex">
+        <tr>
+          <td class="col-1">{{ imageModel.name }}</td>
+          <td class="col-4">{{ imageModel.textExtracted }}</td>
+          <td class="col-1">{{ imageModel.boldText }}</td>
+          <td class="col-4">
+            <!-- Displaying image from base64 data -->
+            <img
+              [src]="convertBaseIntoImage(imageModel.image_extracted)"
+              alt="Image"
+              style="max-height: 500px"
+              width="400"
+              class="block xl:block mx-auto border-round w-full"
+              [alt]="imageModel.name"
+            />
+          </td>
+          <td class="col-2">
+            <div
+              class="hoverIcon"
+              (click)="deleteImage(imageModel.id, rowIndex)"
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">There are no images selected yet.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</ng-container>
